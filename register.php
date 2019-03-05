@@ -9,7 +9,7 @@ include 'config.php';
 //Получение данных из глобального массива $_POST
 $get_name = $_POST['get_name'];
 $get_email = $_POST['get_email'];
-$get_passwoed = $_POST['get_password'];
+$get_passwored = $_POST['get_password'];
 
 
 //Проверка данных на заполненность и вывод сообщения о том какая первая переменная пустая

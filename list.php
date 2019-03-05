@@ -1,3 +1,12 @@
+<?php
+session_start();
+echo 'ВарДамп SESSION';
+var_dump($_SESSION);
+echo 'ВарДамп COOKIE';
+var_dump($_COOKIE);
+
+?>
+
 
 <!doctype html>
 <html lang="en">

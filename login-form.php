@@ -1,4 +1,18 @@
 
+<?php
+session_start();
+if (isset($_COOKIE['id_user'])){
+    //ввнесение данных в сессию
+    $_SESSION['id_user'] = $_COOKIE['id_user'] ;
+    $_SESSION['name'] = $_COOKIE['name'] ;
+    $_SESSION['email'] =  $_COOKIE['email'];
+    $_SESSION['pw'] = $_COOKIE['pw'];
+    header('Location: /list.php');
+    exit;
+}
+
+
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -17,16 +31,16 @@
 
   <body>
     <div class="form-wrapper text-center">
-      <form class="form-signin">
+      <form class="form-signin" action="login.php" method="post">
         <img class="mb-4" src="assets/img/bootstrap-solid.svg" alt="" width="72" height="72">
         <h1 class="h3 mb-3 font-weight-normal">Авторизация</h1>
         <label for="inputEmail" class="sr-only">Email</label>
-        <input type="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
+        <input type="email" id="inputEmail" class="form-control" placeholder="Email" name="get_email">
         <label for="inputPassword" class="sr-only">Пароль</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Пароль" required>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Пароль" name="get_password">
         <div class="checkbox mb-3">
           <label>
-            <input type="checkbox" value="remember-me"> Запомнить меня
+            <input type="checkbox" value="remember-me" name="get_cooki"> Запомнить меня
           </label>
         </div>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Войти</button>

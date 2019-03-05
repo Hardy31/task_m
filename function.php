@@ -59,7 +59,7 @@ $pdo = new PDO($sql, $access_root, $pw_root);       //подключение к 
     $statement->execute();
     $arrs = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-    var_dump($arrs);
+    //var_dump($arrs);
 
     return $arrs;
 }
