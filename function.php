@@ -40,7 +40,7 @@ function create ($sql, $access_root, $pw_root,$tabl, $data)
     echo $request;
     $sth = $pdo->prepare($request);
     $sth->execute($data);
-    //var_dump($sth);
+    var_dump($sth);
 }
 
 

@@ -11,6 +11,6 @@ $data_base = [
 */
 
 
-$sql = 'mysql:host=localhost;dbname=task_manager; charset=utf8';
+$sql = 'mysql:host=localhost;dbname=task_manager;charset=utf8';
 $access_root = 'root';
 $pw_root = '9959095';
