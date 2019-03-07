@@ -12,7 +12,7 @@ if (!isset($_SESSION['id_user'])) {
     exit;
 }
 
-var_dump($_SESSION);
+
 /*
 echo 'ВарДамп SESSION';
 var_dump($_SESSION);
@@ -21,13 +21,14 @@ var_dump($_COOKIE);
 */
 
 
-//подготовка запроса
+//подготовка запроса постов
 
 $tabl = 'tasks';
-$key ='id_post';
-$value = $_GET['id_post'];
+$key ='post_status';
+$value = 'general';
 $tasks = select_condit ($sql, $access_root, $pw_root,$tabl, $key, $value);
 //var_dump($tasks);
+
 
 ?>
 
@@ -57,6 +58,7 @@ $tasks = select_condit ($sql, $access_root, $pw_root,$tabl, $key, $value);
                 <div class="col-sm-4 offset-md-1 py-4">
                     <h4 class="text-white"> <?php echo $_SESSION['email']?> </h4>
                     <ul class="list-unstyled">
+                        <li><a href="list.php" class="text-white">вернуться на list.php</a></li>
                         <li><a href="logout.php" class="text-white">Выйти</a></li>
                     </ul>
                 </div>
@@ -68,6 +70,7 @@ $tasks = select_condit ($sql, $access_root, $pw_root,$tabl, $key, $value);
             <a href="#" class="navbar-brand d-flex align-items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
                 <strong>Tasks</strong>
+                <strong><?php echo ' '.$_SESSION['name']?></strong>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -97,14 +100,15 @@ $tasks = select_condit ($sql, $access_root, $pw_root,$tabl, $key, $value);
                         <div class="card mb-4 shadow-sm">
                             <img class="card-img-top" src="assets/img/<?php echo $task['post_picture'];?>">
                             <div class="card-body">
+                                <p class="card-text"><?php echo $task['id_user'];?></p>
                                 <p class="card-text"><?php echo $task['post_name'];?></p>
                                 <p class="card-text"><?php echo $task['post_status'];?></p>
                                 <p class="card-text"><?php echo $task['post_descrip'];?></p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
                                         <a href="<?php echo "list.php" ?>" class="btn btn-sm btn-outline-secondary">Вернуться</a>
-                                        <a href="<?php echo "edit-form.php?id_post=".$task['id_post']?>" class="btn btn-sm btn-outline-secondary">Изменить</a>
-                                        <a href="<?php echo "delete.php?id_post=".$task['id_post']?>" class="btn btn-sm btn-outline-secondary" >Удалить</a>
+                                        <a href="<?php echo "edit-form.php?id_post=".$task['id_post']?>" class="btn btn-sm btn-outline-secondary" <?php if ($task['id_user'] !== $_SESSION['id_user'])  echo 'hidden' ?> >Изменить</a>
+                                        <a href="<?php echo "delete.php?id_post=".$task['id_post']?>" class="btn btn-sm btn-outline-secondary" <?php if ($task['id_user'] !== $_SESSION['id_user'])  echo 'hidden' ?> >Удалить</a>
                                     </div>
                                 </div>
                             </div>

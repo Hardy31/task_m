@@ -1,7 +1,8 @@
 <?php
 session_start();
 
-if (isset($_COOKIE['id_user'])) {
+//незарегистрированный в сесии пользователь возвращается на страницу login-form.php
+if (!isset($_SESSION['id_user'])) {
     header('Location: /login-form.php');
     exit;
 }
@@ -32,7 +33,7 @@ var_dump($_COOKIE);
 
   <body>
     <div class="form-wrapper text-center">
-      <form class="form-signin" action="create.php" method="post">
+      <form class="form-signin" action="create.php" method="post" enctype="multipart/form-data">
 
         <img class="mb-4" src="assets/img/bootstrap-solid.svg" alt="" width="72" height="72">
         <h1 class="h3 mb-3 font-weight-normal">Добавить запись</h1>
@@ -43,7 +44,7 @@ var_dump($_COOKIE);
         <label for="inputEmail" class="sr-only">Описание</label>
         <textarea  class="form-control" cols="30" rows="10" placeholder="Описание" name="get_post_descrip"></textarea>
 
-        <input type="file">
+          <input type="file" name="image"> <br>
 
           <select class="custom-select" name="get_post_status">
               <option selected>Open this select menu</option>

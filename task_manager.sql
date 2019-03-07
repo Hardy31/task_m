@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: localhost
--- Время создания: Мар 06 2019 г., 14:34
+-- Время создания: Мар 08 2019 г., 00:11
 -- Версия сервера: 5.7.25-0ubuntu0.18.04.2
 -- Версия PHP: 7.2.15-0ubuntu0.18.04.1
 
@@ -42,16 +42,15 @@ CREATE TABLE `tasks` (
 --
 
 INSERT INTO `tasks` (`id_post`, `post_name`, `post_descrip`, `post_status`, `post_picture`, `id_user`) VALUES
-(1, 'Задача 1', 'Описание задачи 1', 'draft', '', 16),
-(2, 'Задача 2', 'Описание задачи 2', 'private', '', 16),
-(3, 'Задача 3', 'Описание 3', 'general', '', 16),
-(4, 'Задача 4', 'Описание 4', 'general', '', 16),
-(5, 'sfdh8', '888888888888888888888888888888888', 'draft', '', 16),
-(6, 'задача 9', 'Описание 9 задачи', 'general', '', 16),
-(7, 'задача 1', 'Описание задачи 1', 'general', '', 15),
-(8, 'Запись 10', 'Описание записи 10 Приватная', 'private', '', 16),
-(9, 'Запись 11', 'Описание 11 записи Общедоступная', 'general', '', 16),
-(10, 'Запись 12', 'Описание записи 12 Доступная ', 'general', '', 16);
+(21, 'Задание1', 'Описание задания 1', 'draft', 'f81c1ff0b355d7300db5225260dcf1f0.jpg', 16),
+(26, 'Задание2', 'Описание задания 2', 'private', '0cac2fa1d9eeb87069e388a5b2b7e747.jpg 	', 16),
+(27, 'Задача33', 'Описание задачи 33', 'general', '0b57b2ab2cc44144e93cd1f30f333fe5.jpg', 16),
+(30, 'Проект', '', 'draft', 'd55d83138d34e9e22d8dfe0aacb0e483.jpg', 16),
+(31, 'ЗадачаПользователя1', 'Описание задачи1 пользлвателя 1', 'draft', 'f8e071bdc8d93d6edc7f66dc7335ca7a.jpg', 15),
+(32, 'Задача 2 Пользователя 1', 'Описание Задача 2 Пользователя 1', 'general', 'f8e071bdc8d93d6edc7f66dc7335ca7a.jpg', 15),
+(33, 'Задача', 'Jgbcfybt Задача Jon 1', 'draft', '0cac2fa1d9eeb87069e388a5b2b7e747.jpg', 18),
+(34, 'Задача', 'Описание Задача Jon 2', 'draft', 'f8e071bdc8d93d6edc7f66dc7335ca7a.jpg', 18),
+(35, '55', '5555', 'draft', '399201c4ea2f17ad043a25335a957c99.jpg', 18);
 
 -- --------------------------------------------------------
 
@@ -74,7 +73,8 @@ INSERT INTO `users` (`id_user`, `name`, `email`, `pw`) VALUES
 (12, 'Gosha2', 'Gosh2@mail.ru', 'e10adc3949ba59abbe56e057f20f883e'),
 (15, '1', '1@1.ru', 'c4ca4238a0b923820dcc509a6f75849b'),
 (16, 'Hardy', 'alex-vav@list.ru', '202cb962ac59075b964b07152d234b70'),
-(17, '2', '2@2.ru', 'c4ca4238a0b923820dcc509a6f75849b');
+(17, '2', '2@2.ru', 'c4ca4238a0b923820dcc509a6f75849b'),
+(18, 'jon', 'jon@dou.com', '202cb962ac59075b964b07152d234b70');
 
 --
 -- Индексы сохранённых таблиц
@@ -101,13 +101,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `tasks`
 --
 ALTER TABLE `tasks`
-  MODIFY `id_post` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id_post` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- Ограничения внешнего ключа сохраненных таблиц

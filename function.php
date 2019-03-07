@@ -5,21 +5,6 @@ error_reporting(E_ALL);
 
 include 'config.php';
 
-/*
-//функция записи нового пользователя в БД
-
-function add_new_user ($sql, $access_root, $pw_root,$get_name,$get_email,$get_passwoed)
-{
-    $pdo = new PDO($sql, $access_root, $pw_root);
-    $request = 'INSERT INTO users( name, email, pw) VALUES (:name, :email, :pw)';
-    $arry = [':name' => $get_name, ':email' => $get_email, ':pw' => $get_passwoed];
-
-    var_dump($arry);
-    $sth = $pdo->prepare($request);
-    $sth->execute($arry);
-    var_dump($sth);
-}
-*/
 
 //функция записи в БД
 
@@ -37,10 +22,10 @@ function create ($sql, $access_root, $pw_root,$tabl, $data)
     //var_dump($key_value);
 
     $request = "INSERT INTO {$tabl} ( {$key_name}) VALUES ({$key_value})";
-    echo $request;
+    //echo $request;
     $sth = $pdo->prepare($request);
     $sth->execute($data);
-    var_dump($sth);
+    //var_dump($sth);
 }
 
 
@@ -51,11 +36,15 @@ function select_condit ($sql, $access_root, $pw_root,$tabl, $key, $value)
 $pdo = new PDO($sql, $access_root, $pw_root);       //подключение к БД
 //var_dump($pdo);
 
+
+
     $condition = $key.' = \''.$value.'\'';
     //echo $condition;
+
+
     $request = "SELECT * FROM {$tabl} WHERE {$condition}";   //подготовили запрос
     //echo $request;
-    $statement = $pdo->prepare($request);                     //Подготовленный запрос отправили в метод Препер объекта ПДО и результат присвоили переменной СТХ
+    $statement = $pdo->prepare($request);
     $statement->execute();
     $arrs = $statement->fetchAll(PDO::FETCH_ASSOC);
 
@@ -64,5 +53,89 @@ $pdo = new PDO($sql, $access_root, $pw_root);       //подключение к 
     return $arrs;
 }
 
+//функция удаления из  БД
+function delete ($sql, $access_root, $pw_root,$tabl, $key, $value)
+{
+
+    $pdo = new PDO($sql, $access_root, $pw_root);       //подключение к БД
+//var_dump($pdo);
+
+    $condition = $key.' = \''.$value.'\'';
+   // echo $condition;
+    $request = "DELETE FROM {$tabl} WHERE {$condition}";   //подготовили запрос
+    //echo $request;
+    $statement = $pdo->prepare($request);
+    $statement->execute();
+
+
+}
+
+
+//функция функция изменения  в БД
+//$data - массив содержащий все поля таблици
+//$key - массив содержащий один элемент
+
+function update ($sql, $access_root, $pw_root, $tabl, $data, $key)
+{
+
+    $pdo = new PDO($sql, $access_root, $pw_root);       //подключение к БД
+    //echo 'ВарДамп $data';
+    //var_dump($data);
+    $glues ='';
+
+    foreach ($data as  $key_data => $value_data){   //формирую запрос
+        $glue = $key_data.'=:'.$key_data;
+        $glues = $glues.", ".$glue;
+        //echo $glues;
+        //echo '<br>';
+
+    }
+
+    $glues = substr($glues,2);              //Удаляю первые два символа
+
+
+    //echo $glues;
+    //echo '<br>';
+    $request = "UPDATE {$tabl} SET {$glues} WHERE {$key}";   //подготовили запрос
+    //echo $request;
+    $statement = $pdo->prepare($request);
+    $statement->execute($data);
+    //var_dump($statement);
+
+}
+
+
 
 ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
