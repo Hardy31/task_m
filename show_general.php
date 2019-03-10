@@ -26,6 +26,8 @@ var_dump($_COOKIE);
 $tabl = 'tasks';
 $key ='post_status';
 $value = 'general';
+
+//Исполенния поиска Задач со статусам general
 $tasks = select_condit ($sql, $access_root, $pw_root,$tabl, $key, $value);
 //var_dump($tasks);
 

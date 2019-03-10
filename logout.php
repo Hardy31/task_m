@@ -1,23 +1,9 @@
 <?php
 
 session_start();
+include 'function.php';
 
-echo 'Это файл для обнулении СЕСИИ ';
-echo '<br>';
-var_dump($_SESSION);
-echo '<br>';
 //обнуление
+logout();
 
-
-if (!isset($_SESSION['user_id'])) {
-
-    unset($_SESSION);
-    session_destroy();
-    echo "Выход осуществлен успешно." . "<br>";
-}
-
-
-var_dump($_SESSION);
-echo '<br>';
-
-header('Location: login-form.php');
+header('Location: index.php');

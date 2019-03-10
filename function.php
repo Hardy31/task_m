@@ -6,6 +6,28 @@ error_reporting(E_ALL);
 include 'config.php';
 
 
+//функция удаления сессии
+function logout ()
+{
+    if (!isset($_SESSION['user_id'])) {
+
+        unset($_SESSION);
+        session_destroy();
+        echo "Выход осуществлен успешно." . "<br>";
+    }
+}
+
+function error($verifiable, $messge)
+{
+    if ($verifiable){
+        $errorMessage = "$messge";
+        include 'errors.php';
+        exit;
+    }
+
+}
+
+
 //функция записи в БД
 
 function create ($sql, $access_root, $pw_root,$tabl, $data)

@@ -12,13 +12,6 @@ if (!isset($_SESSION['id_user'])) {
     exit;
 }
 
-var_dump($_SESSION);
-/*
-echo 'ВарДамп SESSION';
-var_dump($_SESSION);
-echo 'ВарДамп COOKIE';
-var_dump($_COOKIE);
-*/
 
 
 //подготовка запроса
@@ -26,6 +19,8 @@ var_dump($_COOKIE);
 $tabl = 'tasks';
 $key ='id_post';
 $value = $_GET['id_post'];
+
+//Исполенния поиска Задач по id задачи
 $tasks = select_condit ($sql, $access_root, $pw_root,$tabl, $key, $value);
 //var_dump($tasks);
 

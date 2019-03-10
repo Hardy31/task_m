@@ -30,7 +30,7 @@
           <input type="password" id="inputPassword" class="form-control" placeholder="Пароль" name="get_password">
 
         <button class="btn btn-lg btn-primary btn-block" type="submit">Зарегистрироваться</button>
-        <a href="#">Войти</a>
+        <a href="login-form.php">Войти</a>
         <p class="mt-5 mb-3 text-muted">&copy; 2018-2019</p>
       </form>
     </div>

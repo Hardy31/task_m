@@ -1,18 +1,5 @@
 
-<?php
-session_start();
-if (isset($_COOKIE['id_user'])){
-    //ввнесение данных в сессию
-    $_SESSION['id_user'] = $_COOKIE['id_user'] ;
-    $_SESSION['name'] = $_COOKIE['name'] ;
-    $_SESSION['email'] =  $_COOKIE['email'];
-    $_SESSION['pw'] = $_COOKIE['pw'];
-    header('Location: /list.php');
-    exit;
-}
 
-
-?>
 <!doctype html>
 <html lang="en">
   <head>

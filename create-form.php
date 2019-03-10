@@ -6,12 +6,7 @@ if (!isset($_SESSION['id_user'])) {
     header('Location: /login-form.php');
     exit;
 }
-/*
-echo 'ВарДамп SESSION';
-var_dump($_SESSION);
-echo 'ВарДамп COOKIE';
-var_dump($_COOKIE);
-*/
+
 ?>
 
 

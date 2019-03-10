@@ -4,15 +4,11 @@ session_start();
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
-
-//echo 'ВарДамп SESSION';
-//var_dump($_SESSION);
-//var_dump($_FILES);
-/*
-echo 'ВарДамп COOKIE';
-var_dump($_COOKIE);
-*/
-
+//незарегистрированный в сесии пользователь возвращается на страницу login-form.php
+if (isset($_COOKIE['id_user'])) {
+    header('Location: /login-form.php');
+    exit;
+}
 
 
 include 'function.php';
@@ -23,7 +19,6 @@ include 'config.php';
 $tmp_name = $_FILES['image']['tmp_name'];
 $newName = md5 (microtime()).'.jpg';
 move_uploaded_file($_FILES['image']['tmp_name'],'assets/img/'.$newName);
-
 
 
 //подготовка запроса
@@ -38,12 +33,10 @@ $data = [
     'id_user' => $_SESSION['id_user'],
     'id_post' => $_POST['get_id_post'],
 ];
-//echo 'ВарДамп $data';
-//var_dump($data);
-
 $key = 'id_post=:id_post';
-//echo $key;
 
+
+//запись исправленных данных в БД
 update ($sql, $access_root, $pw_root, $tabl, $data, $key);
 
 //переадресация на станицу list.php

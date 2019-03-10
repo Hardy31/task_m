@@ -6,14 +6,17 @@ error_reporting(E_ALL);
 include 'function.php';
 include 'config.php';
 
-//echo 'ВарДамп $_GET';
-//var_dump($_GET);
+//незарегистрированный в сесии пользователь возвращается на страницу login-form.php
+if (!isset($_SESSION['id_user'])) {
+    header('Location: /login-form.php');
+    exit;
+}
+
 $tabl = 'tasks';
 $key = 'id_post';
 $value = $_GET['id_post'];
 $result = select_condit ($sql, $access_root, $pw_root,$tabl, $key, $value);
-//echo 'ВарДамп $result';
-//var_dump ($result);
+
 
 
 ?>

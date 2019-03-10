@@ -5,20 +5,14 @@ error_reporting(E_ALL);
 include 'function.php';
 include 'config.php';
 
-
 //Получение данных из глобального массива $_POST
-$get_name = $_POST['get_name'];
-$get_email = $_POST['get_email'];
-$get_passwored = $_POST['get_password'];
-
+//var_dump($_POST);
 
 //Проверка данных на заполненность и вывод сообщения о том какая первая переменная пустая
 foreach ($_POST as $key =>$input){
-    if (empty($input)){
-        $errorMessage = "незаполнено поле $key";
-                include 'errors.php';
-        exit;
-    }
+    $verifiable = empty($input);
+    $messge = "незаполнено поле $key";
+     error($verifiable, $messge);
 }
 
 
@@ -35,17 +29,15 @@ foreach ($data as $key => $value){
     echo $value;
     $result = select_condit ($sql, $access_root, $pw_root,$tabl, $key, $value);
     //var_dump ($result);
-    if (isset($result[0][$key]) ){
-        $errorMessage = "Пользователь с таким  $key  уже существует!";
-        include 'errors.php';
-        exit;
-    }
-}
 
+    //вывод сообщения о занятости Ника и дублирование почты в БД
+    $verifiable = isset($result[0][$key]);
+    $messge = "нПользователь с таким  $key  уже существует!";
+    error($verifiable, $messge);
+    }
 
 
 //Запись нового пользователя в БД
-
 $tabl = 'users';
 
 $data = [

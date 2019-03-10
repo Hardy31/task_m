@@ -11,20 +11,13 @@ if (!isset($_SESSION['id_user'])) {
     exit;
 }
 
-//var_dump($_SESSION);
-/*
-echo 'ВарДамп SESSION';
-var_dump($_SESSION);
-echo 'ВарДамп COOKIE';
-var_dump($_COOKIE);
-*/
-
-
 //подготовка запроса
 
 $tabl = 'tasks';
 $key ='id_user';
 $value = $_SESSION['id_user'];
+
+//Выполнение запроса  SELECT по id_user.
 $tasks = select_condit ($sql, $access_root, $pw_root,$tabl, $key, $value);
 //var_dump($tasks);
 
@@ -69,8 +62,8 @@ $tasks = select_condit ($sql, $access_root, $pw_root,$tabl, $key, $value);
           <a href="#" class="navbar-brand d-flex align-items-center">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
             <strong>Tasks    </strong>
+              <br>
             <strong><?php echo ' '.$_SESSION['name']?></strong>
-
           </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
