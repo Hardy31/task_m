@@ -70,7 +70,7 @@ $pdo = new PDO($sql, $access_root, $pw_root);       //подключение к 
     $statement->execute();
     $arrs = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-    //var_dump($arrs);
+   //var_dump($arrs);
 
     return $arrs;
 }
@@ -126,6 +126,35 @@ function update ($sql, $access_root, $pw_root, $tabl, $data, $key)
 
 }
 
+//функция поиска в таблице users по id имя пользователя
+function search_by_id_name ($value)
+{
+
+    $sql = 'mysql:host=localhost;dbname=task_manager;charset=utf8';
+    $access_root = 'root';
+    $pw_root = '9959095';
+    $tabl = 'users';
+    $key = 'id_user';
+
+    $pdo = new PDO($sql, $access_root, $pw_root);       //подключение к БД
+//var_dump($pdo);
+
+
+
+    $condition = $key.' = \''.$value.'\'';
+    //echo $condition;
+
+
+    $request = "SELECT * FROM {$tabl} WHERE {$condition}";   //подготовили запрос
+    //echo $request;
+    $statement = $pdo->prepare($request);
+    $statement->execute();
+    $arrs = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+    //var_dump($arrs);
+
+    return $arrs[0]['name'];
+}
 
 
 ?>

@@ -12,11 +12,12 @@ if (isset($_COOKIE['id_user'])) {
 
 include 'function.php';
 include 'config.php';
-
+var_dump($_POST);
+var_dump($_FILES);
 
 //работа скартинкой
-$tmp_name = $_FILES['image']['tmp_name'];
-$newName = md5 (microtime()).'.jpg';
+
+$newName = md5 ($_FILES['image']['name']).'.jpg';
 move_uploaded_file($_FILES['image']['tmp_name'],'assets/img/'.$newName);
 
 

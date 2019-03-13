@@ -13,12 +13,23 @@ if (isset($_COOKIE['id_user'])) {
 
 include 'function.php';
 include 'config.php';
-//var_dump($_POST);
+var_dump($_POST);
+var_dump($_GET);
 
-//работа скартинкой
-$tmp_name = $_FILES['image']['tmp_name'];
-$newName = md5 (microtime()).'.jpg';
-move_uploaded_file($_FILES['image']['tmp_name'],'assets/img/'.$newName);
+//Получение данных из БД по ID поста
+$tabl = 'tasks';
+$key = 'id_post';
+$value = $_GET['id_post'];
+$result = select_condit ($sql, $access_root, $pw_root,$tabl, $key, $value);
+var_dump($result[0]);
+
+//если картинку не выбралт то остается прежняя
+$newName = md5 ($_FILES['image']['name']).'.jpg';
+if ($newName == 'd41d8cd98f00b204e9800998ecf8427e.jpg') {
+    $newName = $result[0]['post_picture'];
+    }else{
+    move_uploaded_file($_FILES['image']['tmp_name'],'assets/img/'.$newName);
+}
 
 
 //подготовка запроса

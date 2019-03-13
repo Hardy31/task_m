@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: localhost
--- Время создания: Мар 08 2019 г., 00:11
+-- Время создания: Мар 13 2019 г., 23:53
 -- Версия сервера: 5.7.25-0ubuntu0.18.04.2
 -- Версия PHP: 7.2.15-0ubuntu0.18.04.1
 
@@ -42,15 +42,15 @@ CREATE TABLE `tasks` (
 --
 
 INSERT INTO `tasks` (`id_post`, `post_name`, `post_descrip`, `post_status`, `post_picture`, `id_user`) VALUES
-(21, 'Задание1', 'Описание задания 1', 'draft', 'f81c1ff0b355d7300db5225260dcf1f0.jpg', 16),
-(26, 'Задание2', 'Описание задания 2', 'private', '0cac2fa1d9eeb87069e388a5b2b7e747.jpg 	', 16),
-(27, 'Задача33', 'Описание задачи 33', 'general', '0b57b2ab2cc44144e93cd1f30f333fe5.jpg', 16),
-(30, 'Проект', '', 'draft', 'd55d83138d34e9e22d8dfe0aacb0e483.jpg', 16),
-(31, 'ЗадачаПользователя1', 'Описание задачи1 пользлвателя 1', 'draft', 'f8e071bdc8d93d6edc7f66dc7335ca7a.jpg', 15),
-(32, 'Задача 2 Пользователя 1', 'Описание Задача 2 Пользователя 1', 'general', 'f8e071bdc8d93d6edc7f66dc7335ca7a.jpg', 15),
-(33, 'Задача', 'Jgbcfybt Задача Jon 1', 'draft', '0cac2fa1d9eeb87069e388a5b2b7e747.jpg', 18),
-(34, 'Задача', 'Описание Задача Jon 2', 'draft', 'f8e071bdc8d93d6edc7f66dc7335ca7a.jpg', 18),
-(35, '55', '5555', 'draft', '399201c4ea2f17ad043a25335a957c99.jpg', 18);
+(58, 'Фотоурок', 'Фотосесиия в лесу ', 'general', 'c7a34ad0cb3ecc39c3c24cea08b003b0.jpg', 28),
+(59, 'php', 'проверка заданий', 'general', 'dcfdbf8846e2b87ee95bca2d7ef26e18.jpg', 28),
+(60, 'выезд на полеты', 'Сторожевое - прогноз на воскресенье положительный ', 'general', '68d5535b971d558f594f10a5affd0a71.jpg', 16),
+(61, 'Написать друзьям', 'Написать друзьяи  КВИРТУ', 'general', 'c1ca21486463f85f68a7960f2880fee2.jpg', 16),
+(62, 'Позвонить', 'Позвонить Luis\r\nсуперкарго Новорос -Джакарта', 'private', 'ab00d430cec7b5a4aaf5cf9f26a14d8d.jpg', 16),
+(63, 'Провести тренировку', 'Пятница 19-00 тренирока Айкидо', 'general', 'a09a636b3f088be8816ad1a438d12f31.jpg', 16),
+(64, 'Подвох', 'Подготовить оборудование  для ПодВох', 'draft', 'd981a8b1fae6a56cbfd792de36a93677.jpg', 16),
+(65, 'Проект ООП', 'Пройти 3и урока ', 'general', 'b5e8c8445e53f39a0250ffc949f6c30d.jpg', 29),
+(66, 'Сын', 'Уделить время семье', 'private', 'b5e8c8445e53f39a0250ffc949f6c30d.jpg', 29);
 
 -- --------------------------------------------------------
 
@@ -70,11 +70,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id_user`, `name`, `email`, `pw`) VALUES
-(12, 'Gosha2', 'Gosh2@mail.ru', 'e10adc3949ba59abbe56e057f20f883e'),
-(15, '1', '1@1.ru', 'c4ca4238a0b923820dcc509a6f75849b'),
-(16, 'Hardy', 'alex-vav@list.ru', '202cb962ac59075b964b07152d234b70'),
-(17, '2', '2@2.ru', 'c4ca4238a0b923820dcc509a6f75849b'),
-(18, 'jon', 'jon@dou.com', '202cb962ac59075b964b07152d234b70');
+(16, 'Hardy', 'hardy@mail.ru', '202cb962ac59075b964b07152d234b70'),
+(28, 'Marlin', 'Marlin@mail.ru', '202cb962ac59075b964b07152d234b70'),
+(29, 'Max', 'Max@mail.ru', '202cb962ac59075b964b07152d234b70');
 
 --
 -- Индексы сохранённых таблиц
@@ -101,13 +99,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `tasks`
 --
 ALTER TABLE `tasks`
-  MODIFY `id_post` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id_post` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 
 --
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- Ограничения внешнего ключа сохраненных таблиц

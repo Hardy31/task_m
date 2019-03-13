@@ -5,11 +5,22 @@ error_reporting(E_ALL);
 include 'function.php';
 include 'config.php';
 
-//незарегистрированный в сесии пользователь возвращается на страницу login-form.php
-if (!isset($_SESSION['id_user'])) {
+
+
+
+//есди существует $_COOKIE['id_user'] то создается сессия с этим пользователем,
+// иначе если не существует  $_SESSION['id_user'] то  происходит возврат на станицу header('Location: /login-form.php')
+//иначе продолжается выполняться код
+if (isset($_COOKIE['id_user'])) {
+    $_SESSION['id_user'] = $_COOKIE['id_user'];
+    $_SESSION['name'] = $_COOKIE['email'];
+    $_SESSION['email'] =  $_COOKIE['email'];
+    $_SESSION['pw'] = $_COOKIE['pw'];
+}elseif (!isset($_SESSION['id_user'])){
     header('Location: /login-form.php');
     exit;
 }
+
 
 //подготовка запроса
 
@@ -19,7 +30,7 @@ $value = $_SESSION['id_user'];
 
 //Выполнение запроса  SELECT по id_user.
 $tasks = select_condit ($sql, $access_root, $pw_root,$tabl, $key, $value);
-//var_dump($tasks);
+
 
 ?>
 

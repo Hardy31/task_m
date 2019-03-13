@@ -102,7 +102,9 @@ $tasks = select_condit ($sql, $access_root, $pw_root,$tabl, $key, $value);
                         <div class="card mb-4 shadow-sm">
                             <img class="card-img-top" src="assets/img/<?php echo $task['post_picture'];?>">
                             <div class="card-body">
-                                <p class="card-text"><?php echo $task['id_user'];?></p>
+                                <p class="card-text"><?php echo search_by_id_name ($task['id_user']);?></p> //выполняется запрос в БД по id и возвращается Имя пользователя
+
+
                                 <p class="card-text"><?php echo $task['post_name'];?></p>
                                 <p class="card-text"><?php echo $task['post_status'];?></p>
                                 <p class="card-text"><?php echo $task['post_descrip'];?></p>

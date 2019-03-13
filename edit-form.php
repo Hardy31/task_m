@@ -16,6 +16,7 @@ $tabl = 'tasks';
 $key = 'id_post';
 $value = $_GET['id_post'];
 $result = select_condit ($sql, $access_root, $pw_root,$tabl, $key, $value);
+var_dump($result[0]);
 
 
 
@@ -40,7 +41,7 @@ $result = select_condit ($sql, $access_root, $pw_root,$tabl, $key, $value);
 
   <body>
     <div class="form-wrapper text-center">
-      <form class="form-signin" action="edit.php" method="post" novalidate enctype="multipart/form-data">
+      <form class="form-signin" action="<?php echo "edit.php?id_post=".$result[0]['id_post']?>"  method="post" novalidate enctype="multipart/form-data">
         <img class="mb-4" src="assets/img/bootstrap-solid.svg" alt="" width="72" height="72">
         <h1 class="h3 mb-3 font-weight-normal">Изменить запись</h1>
         <input type="text"  id="inputEmail" class="form-control" placeholder="Название" required value=<?php echo $result[0]['id_user']; ?> name="get_id_users" hidden>
@@ -51,19 +52,19 @@ $result = select_condit ($sql, $access_root, $pw_root,$tabl, $key, $value);
         <textarea  class="form-control" cols="30" rows="10" placeholder="Описание" name="get_post_descrip"><?php echo $result[0]['post_descrip'];?></textarea>
 
 
-        <input type="file" name="image" > <br>
+        <input type="file" name="image"   > <br>
 
 
           <select class="custom-select" name="get_post_status">
-              <option selected>Open this select menu</option>
-              <option selected value="draft"> draft</option>
-              <option value="private">private</option>
-              <option value="general">general</option>
+
+              <option <?php if ($result[0]['post_status'] == 'draft') echo 'selected';?> value="draft"> draft</option>
+              <option <?php if ($result[0]['post_status'] == 'private') echo 'selected';?> value="private">private</option>
+              <option <?php if ($result[0]['post_status'] == 'general') echo 'selected';?> value="general">general</option>
           </select>
 
+          <input type="image">
 
-
-          <img src="assets/img/no-image.jpg" alt="" width="300" class="mb-3">
+          <img src="assets/img/<?php echo $result[0]['post_picture'];?>" alt="" width="300" class="mb-3">
         <button class="btn btn-lg btn-success btn-block" type="submit">Редактировать</button>
         <p class="mt-5 mb-3 text-muted">&copy; 2018-2019</p>
       </form>
